@@ -3,24 +3,21 @@ import cors from 'cors'
 import 'dotenv/config'
 import express, { type Express } from 'express'
 import morgan from 'morgan'
-import { AuthRoutes } from './routes/AuthRoutes'
+import { EventRoutes } from './routes/EventRoutes'
 import { GroupRoutes } from './routes/GroupRoutes'
 import { HealthRoutes } from './routes/HealthRoutes'
-import { UserRoutes } from './routes/UserRoutes'
 
 export class Application {
   private app: Express
   private healthRoutes: HealthRoutes
-  private authRoutes: AuthRoutes
   private groupRoutes: GroupRoutes
-  private userRoutes: UserRoutes
+  private eventRoutes: EventRoutes
 
   constructor() {
     this.app = express()
     this.healthRoutes = new HealthRoutes()
-    this.authRoutes = new AuthRoutes()
     this.groupRoutes = new GroupRoutes()
-    this.userRoutes = new UserRoutes()
+    this.eventRoutes = new EventRoutes()
   }
 
   public init(): Express {
@@ -32,9 +29,8 @@ export class Application {
       .use(cors())
 
     this.app.use('/', this.healthRoutes.getRouter())
-    this.app.use('/auth', this.authRoutes.getRouter())
     this.app.use('/groups', this.groupRoutes.getRouter())
-    this.app.use('/users', this.userRoutes.getRouter())
+    this.app.use('/events', this.eventRoutes.getRouter())
 
     this.app.use((req, res, next) => {
       res.status(404).json({ status: 404, message: 'Not found' })

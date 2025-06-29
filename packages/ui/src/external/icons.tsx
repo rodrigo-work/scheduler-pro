@@ -4,6 +4,7 @@ import {
   IconBrandAsana,
   IconBrandGithub,
   IconBrandTwitter,
+  IconCalendarEvent,
   IconCheck,
   IconChevronLeft,
   IconChevronRight,
@@ -70,5 +71,6 @@ export const Icons = {
   twitter: IconBrandTwitter,
   check: IconCheck,
   tasks: IconBrandAsana,
-  usersGroup: IconUsersGroup
+  usersGroup: IconUsersGroup,
+  events: IconCalendarEvent
 }

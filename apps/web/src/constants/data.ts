@@ -21,59 +21,53 @@ export const navItems: NavItem[] = [
     shortcut: ['d', 'd'],
     items: [] // Empty array as there are no child items for Dashboard
   },
-  {
-    title: 'Home',
-    url: '/dashboard/home',
-    icon: 'product',
-    shortcut: ['p', 'p'],
-    isActive: false,
-    items: [] // No child items
-  },
-  {
-    title: 'Tasks',
-    url: '/dashboard/tasks',
-    icon: 'tasks',
-    shortcut: ['p', 'p'],
-    isActive: false,
-    items: [] // No child items
-  },
-  {
-    title: 'Account',
-    url: '#', // Placeholder as there is no direct link for the parent
-    icon: 'userPen',
-    isActive: true,
 
-    items: [
-      {
-        title: 'Profile',
-        url: '/dashboard/profile',
-        icon: 'userPen',
-        shortcut: ['m', 'm']
-      },
-      {
-        title: 'Login',
-        shortcut: ['l', 'l'],
-        url: '/auth/login',
-        icon: 'login'
-      }
-    ]
-  },
   {
-    title: 'User management',
-    url: '#', // Placeholder as there is no direct link for the parent
-    icon: 'usersGroup',
-    isActive: true,
-    items: [
-      {
-        title: 'Users',
-        url: '/dashboard/users'
-      },
-      {
-        title: 'Groups',
-        url: '/dashboard/users/groups'
-      }
-    ]
+    title: 'Events',
+    url: '/dashboard/events',
+    icon: 'events',
+    shortcut: ['p', 'p'],
+    isActive: false,
+    items: [] // No child items
   }
+
+  // {
+  //   title: 'Account',
+  //   url: '#', // Placeholder as there is no direct link for the parent
+  //   icon: 'userPen',
+  //   isActive: true,
+
+  //   items: [
+  //     {
+  //       title: 'Profile',
+  //       url: '/dashboard/profile',
+  //       icon: 'userPen',
+  //       shortcut: ['m', 'm']
+  //     },
+  //     {
+  //       title: 'Login',
+  //       shortcut: ['l', 'l'],
+  //       url: '/auth/login',
+  //       icon: 'login'
+  //     }
+  //   ]
+  // },
+  // {
+  //   title: 'User management',
+  //   url: '#', // Placeholder as there is no direct link for the parent
+  //   icon: 'usersGroup',
+  //   isActive: true,
+  //   items: [
+  //     {
+  //       title: 'Users',
+  //       url: '/dashboard/users'
+  //     },
+  //     {
+  //       title: 'Groups',
+  //       url: '/dashboard/users/groups'
+  //     }
+  //   ]
+  // }
 
   // {
   //   title: 'Kanban',
