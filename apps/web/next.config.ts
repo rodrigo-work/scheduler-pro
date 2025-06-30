@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
+
 import { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  transpilePackages: ['@repo/ui'],
+  // transpilePackages: ['@repo/ui'],
+  // devIndicators: true,
   typescript: {
     ignoreBuildErrors: true
   },

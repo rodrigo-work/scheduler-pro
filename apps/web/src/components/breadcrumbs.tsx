@@ -2,19 +2,27 @@
 
 import { useBreadcrumbs } from '@/hooks/use-breadcrumbs'
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator
-} from '@repo/ui/components/breadcrumb'
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList,
+    BreadcrumbPage,
+    BreadcrumbSeparator
+} from '@repo/design-system/components/ui/breadcrumb'
 import { IconSlash } from '@tabler/icons-react'
 import { Fragment } from 'react'
 
-export function Breadcrumbs() {
-  const items = useBreadcrumbs()
+type BreadcrumbsProps = {
+  lang?: string
+}
+
+export function Breadcrumbs({ lang }: BreadcrumbsProps) {
+  let items = useBreadcrumbs()
   if (items.length === 0) return null
+
+  if (lang) {
+    items = items.slice(1)
+  }
 
   return (
     <Breadcrumb>

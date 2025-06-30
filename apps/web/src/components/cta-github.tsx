@@ -1,4 +1,4 @@
-import { Button } from '@repo/ui/components/button'
+import { Button } from '@repo/design-system/components/ui/button'
 import { IconBrandGithub } from '@tabler/icons-react'
 import Link from 'next/link'
 

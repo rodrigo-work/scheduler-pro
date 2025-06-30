@@ -1,4 +1,4 @@
-import { ScrollArea } from '@repo/ui/components/scroll-area'
+import { ScrollArea } from '@repo/design-system/components/ui/scroll-area'
 import React from 'react'
 
 export default function PageContainer({
