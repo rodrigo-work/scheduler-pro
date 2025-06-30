@@ -1,0 +1,43 @@
+{
+  "folders": [
+    {
+      "name": "scheduler-pro2",
+      "path": "../"
+    },
+    {
+      "name": "api",
+      "path": "../apps/api"
+    },
+    {
+      "name": "web",
+      "path": "../apps/web"
+    },
+    {
+      "name": "ui",
+      "path": "../packages/ui"
+    },
+    {
+      "name": "database",
+      "path": "../packages/database"
+    },
+    {
+      "name": "auth",
+      "path": "../packages/auth"
+    }
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit",
+      "source.organizeImports": "explicit"
+    },
+    "eslint.workingDirectories": [
+      {
+        "mode": "auto"
+      }
+    ],
+    "files.exclude": {
+      "*": false
+    }
+  }
+}
