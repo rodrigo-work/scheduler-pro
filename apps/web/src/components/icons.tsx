@@ -15,6 +15,7 @@ import {
   IconFile,
   IconFileText,
   IconHelpCircle,
+  IconHome,
   IconLayoutDashboard,
   IconLayoutKanban,
   IconLoader2,
@@ -72,5 +73,6 @@ export const Icons = {
   check: IconCheck,
   tasks: IconBrandAsana,
   usersGroup: IconUsersGroup,
-  events: IconCalendarEvent
+  events: IconCalendarEvent,
+  home: IconHome
 }

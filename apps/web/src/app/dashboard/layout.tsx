@@ -2,13 +2,12 @@
 import AppSidebar from '@/components/layout/app-sidebar'
 import Header from '@/components/layout/header'
 import { SidebarInset, SidebarProvider } from '@repo/ui/components/sidebar'
-import type { Metadata } from 'next'
 import { cookies } from 'next/headers'
 
-export const metadata: Metadata = {
-  title: 'Next Shadcn Dashboard Starter',
-  description: 'Basic dashboard with Next.js and Shadcn'
-}
+// export const metadata: Metadata = {
+//   title: 'Next Shadcn Dashboard Starter',
+//   description: 'Basic dashboard with Next.js and Shadcn'
+// }
 
 export default async function DashboardLayout({
   children
@@ -19,6 +18,7 @@ export default async function DashboardLayout({
   const cookieStore = await cookies()
   const defaultOpen =
     cookieStore.get('sidebar:state')?.value === 'false' || true
+
   return (
     // <KBar>
     <SidebarProvider defaultOpen={defaultOpen}>
