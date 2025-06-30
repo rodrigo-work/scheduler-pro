@@ -1,14 +1,17 @@
-import { Providers } from '@/components/providers'
-// import ThemeProvider from '@/components/layout/ThemeToggle/theme-provider'
+import ThemeProvider from '@/components/layout/ThemeToggle/theme-provider'
+import Providers from '@/components/providers'
+import { SETTINGS } from '@/constants/data'
 import { fontVariables } from '@/lib/font'
 import { cn } from '@/lib/utils'
 // import { Toaster } from '@repo/ui/components/sonner'
 import '@repo/ui/styles/globals.css'
-// import '@repo/ui/styles/theme.css'
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata, Viewport } from 'next'
 import { cookies } from 'next/headers'
 import NextTopLoader from 'nextjs-toploader'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
+import { Toaster } from 'sonner'
 
 const META_THEME_COLORS = {
   light: '#ffffff',
@@ -16,8 +19,11 @@ const META_THEME_COLORS = {
 }
 
 export const metadata: Metadata = {
-  title: 'Next Shadcn',
-  description: 'Basic dashboard with Next.js and Shadcn'
+  title: {
+    default: SETTINGS.TITLE,
+    template: `%s | ${SETTINGS.TITLE}`
+  },
+  description: SETTINGS.DESCRIPTION
 }
 
 export const viewport: Viewport = {
@@ -29,6 +35,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  // await new Promise((resolve) => setTimeout(resolve, 3000))
+
   const cookieStore = await cookies()
   // const cookieIDP = cookieStore.get('id_token')?.value ?? ''
   const activeThemeValue = cookieStore.get('active_theme')?.value
@@ -59,21 +67,23 @@ export default async function RootLayout({
       >
         <NextTopLoader showSpinner={false} />
         <NuqsAdapter>
-          {/* <ThemeProvider
+          <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
             enableColorScheme
-          > */}
-          <Providers
-            // cookieIDP={cookieIDP}
-            activeThemeValue={activeThemeValue as string}
           >
-            {/* <Toaster /> */}
-            {children}
-          </Providers>
-          {/* </ThemeProvider> */}
+            <Providers
+              // cookieIDP={cookieIDP}
+              activeThemeValue={activeThemeValue as string}
+            >
+              {children}
+              <Toaster position="bottom-right" />
+              <SpeedInsights />
+              <Analytics />
+            </Providers>
+          </ThemeProvider>
         </NuqsAdapter>
       </body>
     </html>

@@ -2,10 +2,9 @@ import { Breadcrumbs } from '../breadcrumbs'
 // import SearchInput from '../search-input'
 import { Separator } from '@repo/ui/components/separator'
 import { SidebarTrigger } from '@repo/ui/components/sidebar'
-import CtaGithub from '../cta-github'
-// import CtaHealthz from '@repo/ui/external/cta-healthz'
-// import { ThemeSelector } from '@repo/ui/external/theme-selector'
-// import { ModeToggle } from './ThemeToggle/theme-toggle'
+import { CtaInfo } from '../cta-ihfo'
+import { ThemeSelector } from '../theme-selector'
+import { ModeToggle } from './ThemeToggle/theme-toggle'
 
 export default function Header() {
   return (
@@ -17,12 +16,11 @@ export default function Header() {
       </div>
 
       <div className="flex items-center gap-2 px-4">
-        {/* <CtaHealthz /> */}
-        <CtaGithub />
+        <CtaInfo />
         <div className="hidden md:flex">{/* <SearchInput /> */}</div>
         {/* <UserNav /> */}
-        {/* <ModeToggle /> */}
-        {/* <ThemeSelector /> */}
+        <ModeToggle />
+        <ThemeSelector />
       </div>
     </header>
   )

@@ -1,13 +1,17 @@
 'use client'
 
+import { formatDate } from '@/lib/date'
+import { Badge } from '@repo/ui/components/badge'
+import { Button } from '@repo/ui/components/button'
 import { Checkbox } from '@repo/ui/components/checkbox'
+import { DataTableColumnHeader } from '@repo/ui/components/table/data-table-column-header'
+import { IconClockPlay, IconClockStop, IconEdit } from '@tabler/icons-react'
 import { ColumnDef } from '@tanstack/react-table'
+import { useRouter } from 'next/navigation'
 import { locations } from '../data/data'
-import { Task } from '../data/schema'
-import { DataTableRowActions } from './data-table-row-actions'
-import { DataTableColumnHeader } from './table/data-table-column-header'
+import { Event } from '../data/schema'
 
-export const columns: ColumnDef<Task>[] = [
+export const columns: ColumnDef<Event>[] = [
   {
     id: 'select',
     header: ({ table }) => (
@@ -33,68 +37,67 @@ export const columns: ColumnDef<Task>[] = [
     enableHiding: false
   },
   {
+    id: 'id',
     accessorKey: 'id',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="ID" />
     ),
-    cell: ({ row }) => {
+    cell: function IdCell({ row }) {
       const uuid = String(row.getValue('id')).split('-')[0]
-      return <div className="w-[80px]--">{uuid}</div>
+      const router = useRouter()
+      return (
+        <div className="w-[80px]">
+          <Button
+            variant="outline"
+            size="sm"
+            className="ml-auto hidden h-8 lg:flex"
+            onClick={() =>
+              router.push(`/dashboard/events/${row.getValue('id')}`)
+            }
+          >
+            <IconEdit className="h-4 w-4" />
+            {uuid}
+          </Button>
+        </div>
+      )
     },
     enableSorting: false,
-    enableHiding: false
+    enableHiding: true
   },
   {
-    accessorKey: 'title',
+    accessorKey: 'name',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Title" />
+      <DataTableColumnHeader column={column} title="Name" />
     ),
     cell: ({ row }) => {
-      // const label = labels.find((label) => label.value === row.original.label)
-
       return (
-        <div className="flex max-w-[500px] flex-col gap-2">
-          <div className="flex-1 font-medium">
-            {row.getValue('title')}
-            {/* <Badge variant="destructive">
-            </Badge> */}
-          </div>
-          <div className="text-muted-foreground flex-1 truncate text-xs">
+        <div className="flex max-w-[400px] flex-col gap-2">
+          <div className="font-medium">{row.getValue('name')}</div>
+          <div className="text-muted-foreground whitespace-normal">
             {row.original?.description}
           </div>
         </div>
-        // <div className="flex gap-2">
-        //   {/* {label && <Badge variant="outline">{label.label}</Badge>} */}
-        //   <span className="max-w-[500px] truncate font-medium">
-        //     {row.getValue('title')} <br />
-        //     <div className="text-muted-foreground mt-2">
-        //       {row.original?.description}
-        //     </div>
-        //   </span>
-        // </div>
       )
     }
   },
   {
     accessorKey: 'location',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Priority" />
+      <DataTableColumnHeader column={column} title="Location" />
     ),
     cell: ({ row }) => {
-      const priority = locations.find(
-        (priority) => priority.value === row.getValue('location')
+      const location = locations.find(
+        (location) => location.value === row.getValue('location')
       )
 
-      if (!priority) {
+      if (!location) {
         return null
       }
 
       return (
-        <div className="flex items-center gap-2">
-          {priority.icon && (
-            <priority.icon className="text-muted-foreground size-4" />
-          )}
-          <span>{priority.label}</span>
+        <div className="flex flex-row items-center gap-2">
+          <div>{location.icon && <location.icon className="size-4" />}</div>
+          <div className="font-medium">{location.label}</div>
         </div>
       )
     },
@@ -103,52 +106,20 @@ export const columns: ColumnDef<Task>[] = [
     }
   },
   {
-    id: 'guests',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Guests" />
-    ),
-    cell: ({ row }) => {
-      return (
-        <div className="w-[80px]-- text-center">
-          {Array.isArray(row.original?.guests) && row.original.guests.length}
-          {/* {Array.isArray(row.original?.guests) &&
-            row.original.guests.map((tdf, index) => (
-              <div key={index}>
-                <p> {tdf.guest.email}</p>
-              </div>
-            ))} */}
-        </div>
-      )
-    },
-    size: 1120,
-    enableSorting: true,
-    enableHiding: true
-  },
-  {
     accessorKey: 'date',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Date" />
     ),
     cell: ({ row }) => {
-      const isoStringStartTime = row.original?.startTime
-      const startTime = new Date(isoStringStartTime)
-
-      const isoStringEndTime = row.original?.endTime
-      const endTime = new Date(isoStringEndTime)
-
       return (
-        <div className="flex flex-col gap-2">
-          <div className="flex-1 truncate font-medium">
-            {startTime.toLocaleDateString('pt-BR', {
-              day: '2-digit',
-              month: '2-digit',
-              year: 'numeric'
-            })}
-            {/* <Badge variant="destructive">
-            </Badge> */}
+        <div className="flex flex-col gap-2 text-xs">
+          <div className="flex flex-1 items-center gap-2">
+            <IconClockPlay className="size-4" />
+            {formatDate(row.original?.startTime)}
           </div>
-          <div className="text-muted-foreground flex-1 text-xs">
-            {startTime.toLocaleTimeString()} | {endTime.toLocaleTimeString()}
+          <div className="flex flex-1 items-center gap-2">
+            <IconClockStop className="size-4" />
+            {formatDate(row.original?.endTime)}
           </div>
         </div>
       )
@@ -156,35 +127,32 @@ export const columns: ColumnDef<Task>[] = [
     enableSorting: false,
     enableHiding: false
   },
-  // {
-  //   accessorKey: 'status',
-  //   header: ({ column }) => (
-  //     <DataTableColumnHeader column={column} title="Status" />
-  //   ),
-  //   cell: ({ row }) => {
-  //     const status = statuses.find(
-  //       (status) => status.value === row.getValue('status')
-  //     )
+  {
+    id: 'guests',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Guests" />
+    ),
+    cell: ({ row }) => {
+      const total = Array.isArray(row.original?.guests)
+        ? row.original.guests.length
+        : 0
+      const confirmed = Array.isArray(row.original?.guests)
+        ? row.original.guests.filter((g) => g.confirmed).length
+        : 0
 
-  //     if (!status) {
-  //       return null
-  //     }
-
-  //     return (
-  //       <div className="flex w-[100px] items-center gap-2">
-  //         {status.icon && (
-  //           <status.icon className="text-muted-foreground size-4" />
-  //         )}
-  //         <span>{status.label}</span>
-  //       </div>
-  //     )
-  //   },
-  //   filterFn: (row, id, value) => {
-  //     return value.includes(row.getValue(id))
-  //   }
-  // },
+      return (
+        <div className="flex flex-col gap-2 text-xs">
+          <div className="flex flex-1 items-center gap-2">
+            <Badge variant="outline" onClick={() => alert('ok')}>
+              confirmed {confirmed} of {total} guests
+            </Badge>
+          </div>
+        </div>
+      )
+    }
+  },
   {
     id: 'actions',
-    cell: ({ row }) => <DataTableRowActions row={row} />
+    cell: ({ row }) => <>{/* <DataTableRowActions row={row} /> */}</>
   }
 ]

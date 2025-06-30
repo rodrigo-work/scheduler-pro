@@ -1,7 +1,7 @@
-// import { delay } from '@/constants/mock-api'
+import { delay } from '@/lib/utils'
 import { RecentSales } from './recent-sales'
 
 export default async function Sales() {
-  // await delay(3000)
+  await delay(1000)
   return <RecentSales />
 }
