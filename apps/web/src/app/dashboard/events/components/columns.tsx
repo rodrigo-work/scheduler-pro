@@ -1,11 +1,11 @@
 'use client'
 
 import { Checkbox } from '@repo/ui/components/checkbox'
+import { DataTableColumnHeader } from '@repo/ui/components/table/data-table-column-header'
 import { ColumnDef } from '@tanstack/react-table'
 import { locations } from '../data/data'
 import { Task } from '../data/schema'
 import { DataTableRowActions } from './data-table-row-actions'
-import { DataTableColumnHeader } from './table/data-table-column-header'
 
 export const columns: ColumnDef<Task>[] = [
   {

@@ -5,7 +5,7 @@ export default async function Dashboard() {
   // log('Hey! This is the Web page.')
 
   // const { userId } = await auth();
-  redirect('/dashboard')
+  redirect('/dashboard/overview')
   // if (!userId) {
   //   return redirect('/auth/sign-in')
   // } else {

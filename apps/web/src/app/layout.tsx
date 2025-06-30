@@ -1,14 +1,14 @@
-import { Providers } from '@/components/providers'
-// import ThemeProvider from '@/components/layout/ThemeToggle/theme-provider'
+import ThemeProvider from '@/components/layout/ThemeToggle/theme-provider'
+import Providers from '@/components/providers'
 import { fontVariables } from '@/lib/font'
 import { cn } from '@/lib/utils'
 // import { Toaster } from '@repo/ui/components/sonner'
 import '@repo/ui/styles/globals.css'
-// import '@repo/ui/styles/theme.css'
 import type { Metadata, Viewport } from 'next'
 import { cookies } from 'next/headers'
 import NextTopLoader from 'nextjs-toploader'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
+import { Toaster } from 'sonner'
 
 const META_THEME_COLORS = {
   light: '#ffffff',
@@ -59,21 +59,21 @@ export default async function RootLayout({
       >
         <NextTopLoader showSpinner={false} />
         <NuqsAdapter>
-          {/* <ThemeProvider
+          <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
             enableColorScheme
-          > */}
-          <Providers
-            // cookieIDP={cookieIDP}
-            activeThemeValue={activeThemeValue as string}
           >
-            {/* <Toaster /> */}
-            {children}
-          </Providers>
-          {/* </ThemeProvider> */}
+            <Providers
+              // cookieIDP={cookieIDP}
+              activeThemeValue={activeThemeValue as string}
+            >
+              <Toaster />
+              {children}
+            </Providers>
+          </ThemeProvider>
         </NuqsAdapter>
       </body>
     </html>

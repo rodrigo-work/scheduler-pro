@@ -1,12 +1,14 @@
-import { Button } from '@repo/ui/components/button'
+// import { auth } from '@clerk/nextjs/server';
+import { redirect } from 'next/navigation'
 
-export default function Page() {
-  return (
-    <div className="flex min-h-svh items-center justify-center">
-      <div className="flex flex-col items-center justify-center gap-4">
-        <h1 className="text-2xl font-bold">Hello World</h1>
-        <Button size="sm">Button</Button>
-      </div>
-    </div>
-  )
+export default async function Dashboard() {
+  // log('Hey! This is the Web page.')
+
+  // const { userId } = await auth();
+  redirect('/dashboard/overview')
+  // if (!userId) {
+  //   return redirect('/auth/sign-in')
+  // } else {
+  //   redirect('/dashboard/overview')
+  // }
 }

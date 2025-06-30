@@ -2,11 +2,11 @@
 
 import { Button } from '@repo/ui/components/button'
 import { Input } from '@repo/ui/components/input'
+import { DataTableFacetedFilter } from '@repo/ui/components/table/data-table-faceted-filter'
+import { DataTableViewOptions } from '@repo/ui/components/table/data-table-view-options'
 import { Table } from '@tanstack/react-table'
 import { X } from 'lucide-react'
-import { locations } from '../data/data'
-import { DataTableFacetedFilter } from './data-table-faceted-filter'
-import { DataTableViewOptions } from './data-table-view-options'
+import { locations } from '../../data/data'
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>
@@ -45,15 +45,9 @@ export function DataTableToolbar<TData>({
             <X />
           </Button>
         )}
-        <Button size="sm" onClick={() => alert('ddd')}>
-          Add Task
-        </Button>
       </div>
       <div className="flex items-center gap-2">
         <DataTableViewOptions table={table} />
-        <Button size="sm" onClick={() => alert('ddd')}>
-          Add Task
-        </Button>
       </div>
     </div>
   )

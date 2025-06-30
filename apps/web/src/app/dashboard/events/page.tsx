@@ -1,55 +1,55 @@
-import { Heading } from '@/components/layout/heading'
 import PageContainer from '@/components/layout/page-container'
+import { PageHeading } from '@/components/layout/page-heading'
+import { searchParamsCache } from '@/lib/searchparams'
+import { cn } from '@/lib/utils'
+import { buttonVariants } from '@repo/ui/components/button'
 import { Separator } from '@repo/ui/components/separator'
-import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
-import { columns } from './components/columns'
-import { DataTable } from './components/data-table'
-import { UsersDialogs } from './components/users-dialogs'
-import { UsersPrimaryButtons } from './components/users-primary-buttons'
-import UsersProvider from './context/users-context'
+import { IconPlus } from '@tabler/icons-react'
+import Link from 'next/link'
+import { Metadata } from 'next/types'
+import { SearchParams } from 'nuqs/server'
+import EventsListingPage from './components/events-listing-page'
 
 export const metadata: Metadata = {
-  title: 'Tasks',
-  description: 'A task and issue tracker build using Tanstack Table.'
+  title: 'Dashboard: Events'
 }
 
-// Simulate a database read for tasks.
-async function getUsers() {
-  // const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/events`)
-  const result = await fetch(`https://localhost:3000/events.json`)
+type pageProps = { searchParams: Promise<SearchParams> }
 
-  if (!result.ok) {
-    throw new Error('Something went wrong!')
-  }
+export default async function Page(props: pageProps) {
+  const searchParams = await props.searchParams
+  // Allow nested RSCs to access the search params (in a type-safe way)
+  searchParamsCache.parse(searchParams)
 
-  const users = await result.json()
-
-  if (users.data.length === 0) {
-    notFound()
-  }
-
-  return users
-}
-
-export default async function TaskPage() {
-  const { data: tasks } = await getUsers()
+  // This key is used for invoke suspense if any of the search params changed (used for filters).
+  // const key = serialize({ ...searchParams });
 
   return (
-    <>
-      <UsersProvider>
-        <PageContainer scrollable={false}>
-          <div className="flex flex-1 flex-col space-y-4">
-            <div className="flex items-start justify-between">
-              <Heading title="Home" description="Home page of the repo" />
-              <UsersPrimaryButtons />
-            </div>
-            <Separator className="shadow-sm" />
-            <DataTable data={tasks} columns={columns} />
-          </div>
-        </PageContainer>
-        <UsersDialogs />
-      </UsersProvider>
-    </>
+    <PageContainer scrollable={false}>
+      <div className="flex w-full flex-1 flex-col space-y-4">
+        <div className="flex items-start justify-between">
+          <PageHeading
+            title="Events"
+            description="Manage events (Server side table functionalities.)"
+          />
+          <Link
+            href="/dashboard/events/new"
+            className={cn(buttonVariants(), 'text-xs md:text-sm')}
+          >
+            <IconPlus className="mr-2 h-4 w-4" /> Add New
+          </Link>
+        </div>
+        {/* <CardsChat /> */}
+        <Separator />
+        {/* <Suspense
+          // key={key}
+          fallback={
+            <DataTableSkeleton columnCount={5} rowCount={8} filterCount={2} />
+          }
+        > */}
+        <EventsListingPage />
+        {/* </Suspense> */}
+      </div>
+    </PageContainer>
   )
 }

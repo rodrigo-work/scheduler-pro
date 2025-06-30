@@ -1,6 +1,6 @@
 'use client'
 
-import { ScrollArea } from '@repo/ui/components/scroll-area'
+import { ScrollArea, ScrollBar } from '@repo/ui/components/scroll-area'
 import {
   Table,
   TableBody,
@@ -9,6 +9,7 @@ import {
   TableHeader,
   TableRow
 } from '@repo/ui/components/table'
+import { DataTablePagination } from '@repo/ui/components/table/data-table-pagination'
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -23,9 +24,8 @@ import {
   useReactTable,
   VisibilityState
 } from '@tanstack/react-table'
-import * as React from 'react'
+import { useState } from 'react'
 import { DataTableToolbar } from './data-table-toolbar'
-import { DataTablePagination } from './table/data-table-pagination'
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -36,13 +36,10 @@ export function DataTable<TData, TValue>({
   columns,
   data
 }: DataTableProps<TData, TValue>) {
-  const [rowSelection, setRowSelection] = React.useState({})
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  )
-  const [sorting, setSorting] = React.useState<SortingState>([])
+  const [rowSelection, setRowSelection] = useState({})
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
+  const [sorting, setSorting] = useState<SortingState>([])
 
   const table = useReactTable({
     data,
@@ -69,14 +66,14 @@ export function DataTable<TData, TValue>({
     getSortedRowModel: getSortedRowModel(),
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
-    debugTable: true
+    debugTable: process.env.NODE_ENV === 'development' ? true : false
   })
 
   return (
-    <div className="flex flex-col justify-between space-y-4">
+    <div className="flex h-full w-full flex-col justify-between space-y-4">
       <DataTableToolbar table={table} />
-      <div className="rounded-md border">
-        <ScrollArea className="h-[calc(100dvh-280px)] w-full">
+      <div className="flex-1 rounded-md border">
+        <ScrollArea className="h-[calc(100dvh-320px)] w-full">
           <Table>
             <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (
@@ -125,6 +122,7 @@ export function DataTable<TData, TValue>({
               )}
             </TableBody>
           </Table>
+          <ScrollBar orientation="horizontal" />
         </ScrollArea>
       </div>
       <DataTablePagination table={table} />
