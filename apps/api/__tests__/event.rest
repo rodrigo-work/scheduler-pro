@@ -1,0 +1,59 @@
+@baseUrl = http://localhost:3001/api
+
+###
+
+POST {{baseUrl}}/events HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "name",
+  "description": "description",
+  "location": "WhatsApp",
+  "startTime": "2025-11-09T11:52:32.166Z",
+  "endTime": "2025-11-09T11:52:32.166Z",
+  "timezone": "America/Sao_Paulo",
+  "guests": ["alice@email.com", "bob@email.com"]
+}
+
+# {
+#   "title": "Reunião com equipe",
+#   "description": "Discutir roadmap",
+#   "location": "Google Meet",
+#   "startTime": "2025-06-24T14:00:00.000Z",
+#   "endTime": "2025-06-24T15:00:00.000Z",
+#   "timezone": "America/Sao_Paulo",
+#   "guests": ["alice@email.com", "bob@email.com"]
+# }
+
+# {
+#     "title": "Planejamento mensal",
+#     "description": "Definir metas de julho",
+#     "location": "Sala 2",
+#     "startTime": "2025-06-25T10:00:00.000Z",
+#     "endTime": "2025-06-25T11:30:00.000Z",
+#     "timezone": "America/Sao_Paulo",
+#     "guests": ["carla@email.com", "bob@email.com"]
+# }
+
+# {
+#   "title": "Teste",
+#   "description": "Teste",
+#   "location": "Teste",
+#   "startTime": "2025-06-26T16:00:00.000Z",
+#   "endTime": "2025-06-26T17:00:00.000Z",
+#   "timezone": "America/Sao_Paulo",
+#   "guests": ["alice@email.com", "daniel@email.com"]
+# }
+
+###
+
+GET {{baseUrl}}/events HTTP/1.1
+
+###
+
+DELETE {{baseUrl}}/groups HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "fake"
+}

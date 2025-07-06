@@ -1,0 +1,60 @@
+guests:
+  get:
+    summary: Listar todos os convidados
+    responses:
+      200:
+        description: Lista de convidados
+  post:
+    summary: Criar um novo convidado
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [email]
+            properties:
+              email: { type: string }
+    responses:
+      201:
+        description: Convidado criado com sucesso
+
+guestById:
+  get:
+    summary: Buscar convidado por ID
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema: { type: string }
+    responses:
+      200:
+        description: Detalhes do convidado
+  put:
+    summary: Atualizar um convidado
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema: { type: string }
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              email: { type: string }
+    responses:
+      200:
+        description: Convidado atualizado
+  delete:
+    summary: Remover convidado
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema: { type: string }
+    responses:
+      200:
+        description: Convidado removido

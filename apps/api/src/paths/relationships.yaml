@@ -1,0 +1,31 @@
+assignGuestToEvent:
+  post:
+    summary: Relacionar convidado a um evento
+    parameters:
+      - in: path
+        name: guestId
+        required: true
+        schema: { type: string }
+      - in: path
+        name: eventId
+        required: true
+        schema: { type: string }
+    responses:
+      200:
+        description: Convidado relacionado ao evento
+
+confirmGuest:
+  patch:
+    summary: Confirmar presença de convidado no evento
+    parameters:
+      - in: path
+        name: guestId
+        required: true
+        schema: { type: string }
+      - in: path
+        name: eventId
+        required: true
+        schema: { type: string }
+    responses:
+      200:
+        description: Presença confirmada

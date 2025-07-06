@@ -1,0 +1,82 @@
+events:
+  get:
+    summary: Listar todos os eventos
+    responses:
+      200:
+        description: Lista de eventos
+  post:
+    summary: Criar um novo evento
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [name, startTime, endTime, timezone]
+            properties:
+              name: { type: string }
+              description: { type: string }
+              location: { type: string }
+              startTime: { type: string, format: date-time }
+              endTime: { type: string, format: date-time }
+              timezone: { type: string }
+    responses:
+      201:
+        description: Evento criado com sucesso
+
+/events/{id}:
+  get:
+    summary: Buscar evento por ID
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema: { type: string }
+    responses:
+      200:
+        description: Detalhes do evento
+  put:
+    summary: Atualizar um evento
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema: { type: string }
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name: { type: string }
+              description: { type: string }
+              location: { type: string }
+              startTime: { type: string, format: date-time }
+              endTime: { type: string, format: date-time }
+              timezone: { type: string }
+    responses:
+      200:
+        description: Evento atualizado
+  delete:
+    summary: Remover evento
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema: { type: string }
+    responses:
+      200:
+        description: Evento removido
+
+/events/{eventId}/guests:
+  get:
+    summary: Listar convidados de um evento
+    parameters:
+      - in: path
+        name: eventId
+        required: true
+        schema: { type: string }
+    responses:
+      200:
+        description: Lista de convidados do evento
