@@ -1,0 +1,111 @@
+openapi: 3.0.0
+info:
+  title: Guest & Event API
+  version: 1.0.0
+  description: API REST para gerenciamento de convidados e eventos
+
+servers:
+  - url: http://localhost:3001/api
+
+paths:
+  /guests:
+    get:
+      summary: Listar todos os convidados
+      responses:
+        200:
+          description: Lista de convidados
+    post:
+      summary: Criar um novo convidado
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email]
+              properties:
+                email:
+                  type: string
+      responses:
+        201:
+          description: Convidado criado com sucesso
+
+  /guests/{id}:
+    get:
+      summary: Buscar convidado por ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Detalhes do convidado
+    put:
+      summary: Atualizar um convidado
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+      responses:
+        200:
+          description: Convidado atualizado
+    delete:
+      summary: Remover convidado
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Convidado removido
+
+  /guests/{guestId}/events/{eventId}:
+    post:
+      summary: Relacionar convidado a um evento
+      parameters:
+        - in: path
+          name: guestId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Convidado relacionado ao evento
+
+  /guests/{guestId}/events/{eventId}/confirm:
+    patch:
+      summary: Confirmar presença de convidado no evento
+      parameters:
+        - in: path
+          name: guestId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: eventId
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Presença confirmada
