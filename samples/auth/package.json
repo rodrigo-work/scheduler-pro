@@ -1,0 +1,36 @@
+{
+  "name": "@repo/auth",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack --experimental-https",
+    "clean": "rm -rf .next && rm -rf .turbo",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint --max-warnings 0",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@repo/logger": "workspace:*",
+    "@repo/ui": "workspace:*",
+    "next": "^15.3.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@next/eslint-plugin-next": "^15.2.1",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^22.13.9",
+    "@types/react": "^19.1.1",
+    "@types/react-dom": "^19.1.2",
+    "eslint": "^9.22.0",
+    "typescript": "5.8.2"
+  },
+  "exports": {
+    "./styles.css": "./src/app/styles.css",
+    "./login": "./src/app/[[...auth]]/page.tsx",
+    "./api": "./src/app/api/exchange/exchangeToken.ts"
+  }
+}

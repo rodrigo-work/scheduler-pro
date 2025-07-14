@@ -1,0 +1,103 @@
+'use client'
+
+import { useEffect, useState } from 'react'
+//
+import { log } from '@repo/logger'
+import Link from 'next/link'
+import { useRouter, useSearchParams } from 'next/navigation'
+
+const AuthPage = () => {
+  // export default function AuthPage() {
+  log('Hey! This is the AuthPage.')
+
+  const router = useRouter()
+
+  const code = useSearchParams().get('code')
+  const redirect = useSearchParams().get('state') || '/dashboard'
+
+  const [isRedirecting, setIsRedirecting] = useState(false)
+  const [countdown, setCountdown] = useState(3)
+
+  useEffect(() => {
+    const handleLogin = () => {
+      const authorizeUrl =
+        `${process.env.NEXT_PUBLIC_COGNITO_DOMAIN!}/oauth2/authorize?` +
+        `response_type=code&` +
+        `client_id=${process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID!}&` +
+        `redirect_uri=${encodeURIComponent(process.env.NEXT_PUBLIC_COGNITO_REDIRECT_URI!)}&` +
+        `scope=openid&` +
+        `state=${encodeURIComponent(redirect)}` +
+        `&lang=pt-BR`
+
+      router.push(authorizeUrl)
+    }
+
+    const handleRedirect = async () => {
+      if (code) {
+        try {
+          const res = await fetch('https://localhost:3000/api/exchange', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code })
+          })
+
+          if (!res.ok) {
+            console.error('Token exchange failed')
+            setIsRedirecting(false)
+            return
+          }
+
+          alert('succeess')
+
+          router.push(redirect)
+        } catch (err) {
+          console.error('Error exchanging token:', err)
+          setIsRedirecting(false)
+        }
+      } else {
+        setIsRedirecting(true)
+
+        const countdownInterval = setInterval(() => {
+          setCountdown((prev) => {
+            if (prev <= 1) {
+              clearInterval(countdownInterval)
+              handleLogin()
+              return 0
+            }
+            return prev - 1
+          })
+        }, 1000)
+      }
+    }
+
+    handleRedirect()
+  }, [code, redirect, router])
+
+  return (
+    <div className="container">
+      {/* <h1 className="title">
+        Web <br />
+        <span>Next.js</span>
+      </h1> */}
+      {/* <CounterButton /> */}
+      <p className="description">
+        {code ? (
+          <>Validando Auth....</>
+        ) : (
+          <>
+            Redirecionando em {countdown} segundo
+            {countdown !== 1 ? 's' : ''}...
+          </>
+        )}
+      </p>
+
+      <p className="description">
+        Built With <Link href="https://turbo.build/repo">Turborepo</Link>
+        {' & '}
+        <Link href="https://nextjs.org/">Next.js</Link>
+      </p>
+    </div>
+  )
+}
+
+export default AuthPage
