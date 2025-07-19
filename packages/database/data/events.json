@@ -1,0 +1,159 @@
+{
+  "data": [
+    {
+      "id": "28b07cf1-ccb8-47bd-b751-7b9ba6a3b7d6",
+      "name": "Martins EIRELI",
+      "description": "Quibusdam doloremque earum.\nIpsam alias sed ad mollitia.\nUt at possimus deserunt placeat praesentium voluptatum ipsum.",
+      "location": "Google Meet",
+      "startTime": "2024-05-23T17:57:26.232Z",
+      "endTime": "2024-04-04T06:46:33.021Z",
+      "timezone": "America/Sao_Paulo",
+      "createdAt": "2025-11-01T10:48:20.865Z",
+      "updatedAt": "2025-07-19T06:02:06.762Z",
+      "guests": [
+        {
+          "id": "2eb24820-6856-49ea-aed1-4319c14f6a73",
+          "eventId": "28b07cf1-ccb8-47bd-b751-7b9ba6a3b7d6",
+          "guestId": "4bd1dc66-0fe2-4899-9949-f859841cb6cc",
+          "confirmed": true,
+          "guest": {
+            "id": "4bd1dc66-0fe2-4899-9949-f859841cb6cc",
+            "email": "deneval_martins@live.com"
+          }
+        }
+      ]
+    },
+    {
+      "id": "743378a0-ae18-4ebe-8ee8-e650268d2099",
+      "name": "Santos Comércio",
+      "description": "Placeat tempora vitae quas aliquam quo dolores est illum.",
+      "location": "Microsoft Teams",
+      "startTime": "2025-05-01T13:39:42.573Z",
+      "endTime": "2024-05-18T02:21:20.231Z",
+      "timezone": "America/Sao_Paulo",
+      "createdAt": "2026-03-03T05:42:50.958Z",
+      "updatedAt": "2025-07-20T01:21:39.627Z",
+      "guests": [
+        {
+          "id": "f3b2531c-8d5c-4dd5-bb58-55b5786c2569",
+          "eventId": "743378a0-ae18-4ebe-8ee8-e650268d2099",
+          "guestId": "055edde5-1cc1-4861-b0de-ec241e1925f4",
+          "confirmed": true,
+          "guest": {
+            "id": "055edde5-1cc1-4861-b0de-ec241e1925f4",
+            "email": "davi.reis18@gmail.com"
+          }
+        },
+        {
+          "id": "d6bad472-7b03-4477-a141-fc0a8b9c4618",
+          "eventId": "743378a0-ae18-4ebe-8ee8-e650268d2099",
+          "guestId": "6ace80a7-2eed-48b1-bdb8-c877bcec71e9",
+          "confirmed": true,
+          "guest": {
+            "id": "6ace80a7-2eed-48b1-bdb8-c877bcec71e9",
+            "email": "gustavo.souza@yahoo.com"
+          }
+        }
+      ]
+    },
+    {
+      "id": "6c2adbe0-0d81-4b9d-991d-a857bc2ddc0c",
+      "name": "Martins-Macedo",
+      "description": "Nihil unde optio amet tenetur vitae dignissimos delectus dignissimos.",
+      "location": "Microsoft Teams",
+      "startTime": "2025-09-13T23:13:30.580Z",
+      "endTime": "2025-11-28T23:51:47.712Z",
+      "timezone": "America/Sao_Paulo",
+      "createdAt": "2023-11-18T01:06:04.089Z",
+      "updatedAt": "2025-07-20T02:06:40.784Z",
+      "guests": [
+        {
+          "id": "27c858c2-c992-4e0e-969e-84b73689d00c",
+          "eventId": "6c2adbe0-0d81-4b9d-991d-a857bc2ddc0c",
+          "guestId": "980a6f30-0e06-4179-b310-014e30c31c73",
+          "confirmed": true,
+          "guest": {
+            "id": "980a6f30-0e06-4179-b310-014e30c31c73",
+            "email": "pablo_macedo58@gmail.com"
+          }
+        },
+        {
+          "id": "d80dd54a-96af-4b48-82c0-c72fd1f7d9d8",
+          "eventId": "6c2adbe0-0d81-4b9d-991d-a857bc2ddc0c",
+          "guestId": "1c6ec3b5-9f57-49cd-9827-eac528d02578",
+          "confirmed": false,
+          "guest": {
+            "id": "1c6ec3b5-9f57-49cd-9827-eac528d02578",
+            "email": "livia.pereira88@live.com"
+          }
+        }
+      ]
+    },
+    {
+      "id": "678246b3-0283-4c6f-9ba9-653432f436fb",
+      "name": "Moraes-Moraes",
+      "description": "Animi adipisci velit ex quibusdam officiis voluptatibus.\nIpsum blanditiis veniam deserunt eaque necessitatibus sit odit excepturi.",
+      "location": "WhatsApp",
+      "startTime": "2025-03-24T04:49:32.510Z",
+      "endTime": "2024-12-08T08:38:03.184Z",
+      "timezone": "America/Sao_Paulo",
+      "createdAt": "2026-12-20T20:22:55.096Z",
+      "updatedAt": "2025-07-19T06:30:40.306Z",
+      "guests": [
+        {
+          "id": "4b49eb11-0c74-4e94-a04b-fcec875540ab",
+          "eventId": "678246b3-0283-4c6f-9ba9-653432f436fb",
+          "guestId": "9d0ce689-1422-4003-b2d8-a9a236ae0b53",
+          "confirmed": false,
+          "guest": {
+            "id": "9d0ce689-1422-4003-b2d8-a9a236ae0b53",
+            "email": "mariaalice_martins@live.com"
+          }
+        },
+        {
+          "id": "4ebfb983-6fe1-4d63-9b95-2bd18103717e",
+          "eventId": "678246b3-0283-4c6f-9ba9-653432f436fb",
+          "guestId": "4f417edb-5f77-4215-b3ad-9b2eae45f75f",
+          "confirmed": true,
+          "guest": {
+            "id": "4f417edb-5f77-4215-b3ad-9b2eae45f75f",
+            "email": "aline_albuquerque76@live.com"
+          }
+        }
+      ]
+    },
+    {
+      "id": "e1ca9140-92f8-4b29-bf4b-fe9d83f0a873",
+      "name": "Barros EIRELI",
+      "description": "Ea voluptatem eos accusamus neque sed voluptas laboriosam soluta.\nArchitecto corporis alias sequi libero aliquid.\nVero molestias alias cumque aspernatur.",
+      "location": "Google Meet",
+      "startTime": "2025-02-08T18:48:12.983Z",
+      "endTime": "2026-01-11T08:30:29.341Z",
+      "timezone": "America/Sao_Paulo",
+      "createdAt": "2025-08-29T01:58:18.519Z",
+      "updatedAt": "2025-07-19T12:07:04.984Z",
+      "guests": [
+        {
+          "id": "cb682c01-67fe-4893-a6d9-e785667e936f",
+          "eventId": "e1ca9140-92f8-4b29-bf4b-fe9d83f0a873",
+          "guestId": "d2be0ba8-140d-469b-95bd-e19dba94e606",
+          "confirmed": true,
+          "guest": {
+            "id": "d2be0ba8-140d-469b-95bd-e19dba94e606",
+            "email": "fabricio_saraiva@live.com"
+          }
+        },
+        {
+          "id": "74080f92-c860-405e-aafd-9e2a34c64aeb",
+          "eventId": "e1ca9140-92f8-4b29-bf4b-fe9d83f0a873",
+          "guestId": "c48ba379-65d2-4a8b-a2e9-db317081f206",
+          "confirmed": true,
+          "guest": {
+            "id": "c48ba379-65d2-4a8b-a2e9-db317081f206",
+            "email": "pablo_oliveira34@live.com"
+          }
+        }
+      ]
+    }
+  ]
+}

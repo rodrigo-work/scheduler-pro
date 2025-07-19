@@ -1,6 +1,8 @@
+import { PrismaClient } from '@repo/database/generated/client'
 import { readFile } from 'fs/promises'
 import path from 'path'
-import { prisma } from './client'
+
+const prisma = new PrismaClient()
 
 async function main() {
   console.log('📂 Lendo arquivo JSON...')
@@ -41,15 +43,17 @@ async function main() {
         createdAt: new Date(event.createdAt),
         updatedAt: new Date(event.updatedAt),
         guests: {
-          create: event.guests.map((g) => ({
-            id: g.id,
-            confirmed: g.confirmed ?? false,
-            guest: {
-              connect: {
-                id: g.guestId
+          create: event.guests.map(
+            (g: { id: any; confirmed: any; guestId: any }) => ({
+              id: g.id,
+              confirmed: g.confirmed ?? false,
+              guest: {
+                connect: {
+                  id: g.guestId
+                }
               }
-            }
-          }))
+            })
+          )
         }
       }
     })
