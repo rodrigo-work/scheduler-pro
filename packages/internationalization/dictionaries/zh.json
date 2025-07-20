@@ -1,0 +1,41 @@
+{
+  "app": {
+    "lang": "zh",
+    "global": {
+      "primaryCta": "预约电话",
+      "secondaryCta": "注册"
+    },
+    "header": {
+      "home": "首页",
+      "product": {
+        "title": "产品",
+        "description": "今天管理一家小企业已经很困难。",
+        "pricing": "定价"
+      },
+      "blog": "博客",
+      "docs": "文档",
+      "contact": "联系",
+      "signIn": "登录",
+      "signUp": "开始使用"
+    },
+    "events": {
+      "new": {
+        "title": "创建事件",
+        "description": "管理事件 (服务器端表格功能)"
+      },
+      "title": "事件",
+      "description": "管理事件 (服务器端表格功能)",
+      "createEvent": "创建事件",
+      "manageEvents": "管理事件"
+    }
+  },
+  "global": {
+    "locale": "zh"
+  },
+  "components": {
+    "dateTimeSelector": {
+      "title": "选择日期和时间",
+      "description": "选择一个日期和时间进行预约"
+    }
+  }
+}

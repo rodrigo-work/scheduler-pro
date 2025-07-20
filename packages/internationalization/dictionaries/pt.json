@@ -1,0 +1,41 @@
+{
+  "app": {
+    "lang": "pt",
+    "global": {
+      "primaryCta": "Agende uma chamada",
+      "secondaryCta": "Inscreva-se"
+    },
+    "header": {
+      "home": "Início",
+      "product": {
+        "title": "Produto",
+        "description": "Gerenciar uma pequena empresa hoje já é difícil.",
+        "pricing": "Preços"
+      },
+      "blog": "Blog",
+      "docs": "Documentos",
+      "contact": "Contato",
+      "signIn": "Entrar",
+      "signUp": "Comece agora"
+    },
+    "events": {
+      "new": {
+        "title": "Criar Evento",
+        "description": "Gerencie eventos (Funcionalidades da tabela do lado do servidor.)"
+      },
+      "title": "Eventos",
+      "description": "Gerencie eventos (Funcionalidades da tabela do lado do servidor.)",
+      "createEvent": "Criar Evento",
+      "manageEvents": "Gerenciar Eventos"
+    }
+  },
+  "global": {
+    "locale": "pt"
+  },
+  "components": {
+    "dateTimeSelector": {
+      "title": "Selecionar Data e Hora",
+      "description": "Escolha uma data e hora para sua consulta"
+    }
+  }
+}

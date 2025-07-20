@@ -1,0 +1,43 @@
+{
+  "app": {
+    "lang": "en",
+    "global": {
+      "primaryCta": "Book a call",
+      "secondaryCta": "Sign up"
+    },
+
+    "header": {
+      "home": "Home",
+      "product": {
+        "title": "Product",
+        "description": "Managing a small business today is already tough.",
+        "pricing": "Pricing"
+      },
+
+      "blog": "Blog",
+      "docs": "Docs",
+      "contact": "Contact",
+      "signIn": "Sign in",
+      "signUp": "Get started"
+    },
+    "events": {
+      "new": {
+        "title": "Create Event",
+        "description": "Manage events (Server side table functionalities.)"
+      },
+      "title": "Events",
+      "description": "Manage events (Server side table functionalities.)",
+      "createEvent": "Create Event",
+      "manageEvents": "Manage Events"
+    }
+  },
+  "global": {
+    "locale": "en"
+  },
+  "components": {
+    "dateTimeSelector": {
+      "title": "Select Date and Time",
+      "description": "Choose a date and time for your appointment"
+    }
+  }
+}

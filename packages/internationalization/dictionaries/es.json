@@ -1,0 +1,43 @@
+{
+  "app": {
+    "lang": "es",
+    "global": {
+      "primaryCta": "Reservar una llamada",
+      "secondaryCta": "Regístrate"
+    },
+
+    "header": {
+      "home": "Inicio",
+      "product": {
+        "title": "Producto",
+        "description": "Gestionar un pequeño negocio hoy en día ya es difícil.",
+        "pricing": "Precios"
+      },
+
+      "blog": "Blog",
+      "docs": "Docs",
+      "contact": "Contacto",
+      "signIn": "Iniciar sesión",
+      "signUp": "Comenzar"
+    },
+    "events": {
+      "new": {
+        "title": "Crear Evento",
+        "description": "Gestionar eventos (funcionalidades de tabla del lado del servidor.)"
+      },
+      "title": "Eventos",
+      "description": "Gestionar eventos (funcionalidades de tabla del lado del servidor.)",
+      "createEvent": "Crear Evento",
+      "manageEvents": "Gestionar Eventos"
+    }
+  },
+  "global": {
+    "locale": "es"
+  },
+  "components": {
+    "dateTimeSelector": {
+      "title": "Seleccionar fecha y hora",
+      "description": "Elige una fecha y hora para tu cita"
+    }
+  }
+}
